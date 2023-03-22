@@ -68,7 +68,7 @@ if(empty($_SESSION["shopping_cart"])) {
               <input type='hidden' name='code' value="<?php  echo $row['code'] ?>" />
 
             <a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
-              <img src="http://localhost/Merushops\Version3.0.2\dashboardpanel/images/sales/<?php echo htmlentities($row['productImage1']);?>" class="img-responsive"></a>
+              <?php echo "<img src='$imagePath".$row['productImage1']."' >"; ?></a>
 
             <h5 ><?php echo $row["pName"]; ?></h5>
             <h3 >Ksh.<?php echo $row["price"]; ?></h3>
@@ -94,8 +94,8 @@ if(empty($_SESSION["shopping_cart"])) {
             <form method="post" action="">
               <input type='hidden' name='code' value="<?php  echo $row['code'] ?>" />
 
-            <a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
-              <img src="http://localhost/Merushops\Version3.0.2\dashboardpanel/images/sales/<?php echo htmlentities($row['productImage1']);?>" class="img-responsive"></a>
+              <a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
+              <?php echo "<img src='$imagePath".$row['productImage1']."' >"; ?></a>
 
             <h5 ><?php echo $row["pName"]; ?></h5>
             <h3 >Ksh.<?php echo $row["price"]; ?></h3>
@@ -121,8 +121,8 @@ if(empty($_SESSION["shopping_cart"])) {
             <form method="post" action="">
               <input type='hidden' name='code' value="<?php  echo $row['code'] ?>" />
 
-            <a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
-              <img src="http://localhost/Merushops\Version3.0.2\dashboardpanel/images/sales/<?php echo htmlentities($row['productImage1']);?>" class="img-responsive"></a>
+              <a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
+              <?php echo "<img src='$imagePath".$row['productImage1']."' >"; ?></a>
 
             <h5 ><?php echo $row["pName"]; ?></h5>
             <h3 >Ksh.<?php echo $row["price"]; ?></h3>

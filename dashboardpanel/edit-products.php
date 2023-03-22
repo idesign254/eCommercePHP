@@ -1,29 +1,29 @@
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['admnlogin'])==0)
-	{	
-echo "<script> window.location.assign('index.php'); </script>";
-}
-else{
-	$pid=intval($_GET['id']);// product id
-if(isset($_POST['submit']))
-{
-	$code=$_POST['code'];
-	$category=$_POST['category'];
-	$description=$_POST['description'];
-	$pName=$_POST['pName'];
-	$price=$_POST['price'];
-	$shop=$_POST['shop'];
-	$productAvailability=$_POST['productAvailability'];
-	
-$sql=mysqli_query($con,"update  products set code='$code',category='$category',description='$description',pName='$pName',price='$price',shop='$shop',productAvailability='$productAvailability' where id='$pid' ");
-$_SESSION['msg']="Product Updated Successfully !!";
+	<?php
+		session_start();
+			include('include/config.php');
+			if(strlen($_SESSION['admnlogin'])==0)
+				{	
+			echo "<script> window.location.assign('index.php'); </script>";
+			}
+			else{
+				$pid=intval($_GET['id']);// product id
+			if(isset($_POST['submit']))
+			{
+				$code=$_POST['code'];
+				$category=$_POST['category'];
+				$description=$_POST['description'];
+				$pName=$_POST['pName'];
+				$price=$_POST['price'];
+				$shop=$_POST['shop'];
+				$productAvailability=$_POST['productAvailability'];
+				
+			$sql=mysqli_query($con,"update  products set code='$code',category='$category',description='$description',pName='$pName',price='$price',shop='$shop',productAvailability='$productAvailability' where id='$pid' ");
+			$_SESSION['msg']="Product Updated Successfully !!";
 
-}
+		}
 
 
-?>
+	?>
 
    <script>
 function getSubcat(val) {
@@ -119,14 +119,16 @@ while($row=mysqli_fetch_array($query))
 <div class="control-group">
 <label class="control-label" for="basicinput">Product Image1</label>
 <div class="controls">
-<img src="images/sales/<?php echo htmlentities($result['productImage1']);?>" width="200" height="100"> <a href="update-image1.php?id=<?php echo $result['id'];?>">Change Image</a>
+<img src=<?php echo $imagePath.$result['productImage1']; ?> width="200">
+<a href="update-image1.php?id=<?php echo $result['id'];?>">Change Image</a>
 </div>
 </div>
 
 <div class="control-group">
 <label class="control-label" for="basicinput">Product Image2</label>
 <div class="controls">
-<img src="images/sales/<?php echo htmlentities($result['productImage2']);?>" width="200" height="100"> <a href="update-image2.php?id=<?php echo $result['id'];?>">Change Image</a></div>
+<img src=<?php echo $imagePath.$result['productImage2']; ?> width="200">
+<a href="update-image2.php?id=<?php echo $result['id'];?>">Change Image</a></div>
 </div>
 
 <div class="control-group">

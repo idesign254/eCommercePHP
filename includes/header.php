@@ -1,5 +1,5 @@
 <?php
-$ProfileimagePath = 'http://ecommerce/images/profile_pics';
+$ProfileimagePath = 'http://ecommerce/images/profile_pics/';
 $imagePath = 'http://ecommerce/images/sales/';
 
 if(isset($_POST['emailsubscibe'])) {
@@ -126,18 +126,6 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 							<li><a href="wish.php">Wish</a></li>
 							<li><a href="myorders.php">Orders</a></li>
 							<li><a href="profile.php">Profile</a></li>
-							<li><a href="post-testimonial.php">Testimonial</a></li>
-						<!---	<li class="has-dropdown">
-								<a href="blog.php">Blog</a>
-								<ul class="dropdown">
-									<li><a href="https://www.kilimall.co.ke/">Kilimall</a></li>
-									<li><a href="https://www.alibaba.com/">Alibaba</a></li>
-									<li><a href="https://jiji.co.ke/">Jiji</a></li>
-									<li><a href="https://www.jumia.co.ke/">Jumia</a></li>
-									
-								</ul>
-							</li>    ---->
-							<li><a href="contact.php">Contact</a></li>
 						</ul>
 					</div>
 				</div>

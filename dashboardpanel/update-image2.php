@@ -102,7 +102,7 @@ while($row=mysqli_fetch_array($query))
 <div class="control-group">
 <label class="control-label" for="basicinput">Current Product Image1</label>
 <div class="controls">
-<img src="images/sales/<?php echo htmlentities($row['productImage2']);?>" width="200" height="100"> 
+<img src=<?php echo $imagePath.$row['productImage2']; ?> width="200">
 </div>
 </div>
 

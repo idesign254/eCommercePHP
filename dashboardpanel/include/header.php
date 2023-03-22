@@ -1,3 +1,8 @@
+<?php
+	$ProfileimagePath = 'http://ecommerce/images/profile_pics/';
+	$imagePath = 'http://ecommerce/images/sales/';
+?>	
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -52,8 +52,7 @@ if(isset($_SESSION["shopping_cart"])){
 foreach ($_SESSION["shopping_cart"] as $product){
 ?>
                   <tr>
-          <td><img src="images/<?php echo htmlentities($product["productImage1"]); ?>" width="50" height="40" /></td> 
-
+          <td><?php echo "<img src='$imagePath".$product['productImage1']."' width='50' height='40'>";  ?></td>
           <td><?php echo $product["pName"]; ?><br /></td>              
 
            <td>

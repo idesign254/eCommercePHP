@@ -203,9 +203,8 @@
       ?>
 						<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
 						     <div class="img-responsive"> 
-								<?php 
-								echo "<img src='$imagePath".$row['productImage1']."' >";
-								?>  </div> </a>
+								<?php echo "<img src='$imagePath".$row['productImage1']."' >"; ?>  
+							</div> </a>
 						<h3 >Ksh.<?php echo $row["price"]; ?></h3>
 						<div class="title">
 							<h3><a href="#">Cool</a></h3>

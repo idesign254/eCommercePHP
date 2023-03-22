@@ -8,9 +8,9 @@
 					<div class="col-md-4 col-sm-4 col-xs-6">
 						<ul class="fh5co-footer-links">
 							<li><a href="#">Mens Fashion</a></li>
-							<li><a href="#">Ladies Fashion</a></li>
+							<li><a href="#">Ladies Fashion</a></li>							
 						</ul>
-					</div>
+					</div>						
 
 					<div class="col-md-4 col-sm-4 col-xs-6">
 						<h3>Shops</h3>
@@ -22,9 +22,11 @@
 					</div>
 
 					<div class="col-md-4 col-sm-4 col-xs-6">
-						<h3>manage</h3>
+						<h3>Other Links</h3>
 						<ul class="fh5co-footer-links">
 							<li><a href="shop/">shop</a></li>
+							<li><a href="post-testimonial.php">Testimonials</a></li>
+							<li><a href="contact.php">Contact</a></li>
 						</ul>
 					</div>
 
