@@ -54,7 +54,6 @@ function showHint(str) {
               $rowuser=mysqli_fetch_array($query);
             ?>
 
-
 <div class="col-sm-6" style="padding-left:100px;">
     <!-- <h3><?php // echo htmlentities($_SESSION['username']);?></h3>    -->
       <div class="control-group">

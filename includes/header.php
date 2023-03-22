@@ -20,7 +20,6 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 }
 ?>
 
-
 <!DOCTYPE HTML>
 <html>
 	<head>
