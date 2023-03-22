@@ -174,7 +174,6 @@ background:#3594D2;
         <button type="submit" name="submit" class="btn">Log In</button>  <!-- End Btn -->
       </div> 
         </form>
-        <a href="https://merushops.mmdtech.co.ke/"><h2>Merushops</h2></a>
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>

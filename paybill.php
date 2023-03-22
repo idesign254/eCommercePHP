@@ -1,20 +1,19 @@
-    <?php  require('includes/conn.php'); ?>
-    <?php  if(strlen($_SESSION['login'])==0)
-    {   
-echo "<script> window.location.assign('checkoutlogin.php'); </script>";
-}
-?>
+<?php  require('includes/conn.php'); ?>
+<?php  if(strlen($_SESSION['login'])==0)
+          {   
+      echo "<script> window.location.assign('checkoutlogin.php'); </script>";
+      }
+      ?>
 
 <?php include('includes/header.php');
 ?>
 
   
-          <?php
-      
+      <?php      
         if(isset($_POST['submit'])){
-             $consumer_key = "yr1XvuXAvBSIEDWaCmiXaLRoXQAx5br7";
-            $consumer_secret = "RVnHw85BW1kxt5dt";
-            $PhoneNumber = $_POST['tel'];
+           $consumer_key = "tTCPyeFhCnnoXao72AtLd2AW8BNX64pe";
+           $consumer_secret = "SswcSGCDkmYa1yDE";
+           $PhoneNumber = $_POST['tel'];
             //$Amount  = 200;
            $Account = 'Meru Shops';
            $TransDesc = 'Sales';
@@ -26,56 +25,56 @@ echo "<script> window.location.assign('checkoutlogin.php'); </script>";
            } 
             
             /*generate token*/
-            $url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        $credentials = base64_encode($consumer_key.':'.$consumer_secret);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Basic '.$credentials)); //setting a custom header
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+          $url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
+          $curl = curl_init();
+          curl_setopt($curl, CURLOPT_URL, $url);
+          $credentials = base64_encode($consumer_key.':'.$consumer_secret);
+          curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Basic '.$credentials)); //setting a custom header
+          curl_setopt($curl, CURLOPT_HEADER, false);
+          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+          curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-        $curl_response = curl_exec($curl);
+          $curl_response = curl_exec($curl);
 
-        $token = json_decode($curl_response)->access_token;
+          $token = json_decode($curl_response)->access_token;
         
         /*generate pass and prompt for stk push*/
         
-               $timestamp='20'.date("ymdhis");
-               $BusinessShortCode = '174379';
-               $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-        $password=base64_encode($BusinessShortCode.$LipaNaMpesaPasskey.$timestamp);
-        $url1 = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
+          $timestamp='20'.date("ymdhis");
+          $BusinessShortCode = '174379';
+          $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
+          $password=base64_encode($BusinessShortCode.$LipaNaMpesaPasskey.$timestamp);
+          $url1 = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url1);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization:Bearer '.$token));
+          $curl = curl_init();
+          curl_setopt($curl, CURLOPT_URL, $url1);
+          curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization:Bearer '.$token));
 
 
-        $curl_post_data = array(
-            'BusinessShortCode' => $BusinessShortCode,
-            'Password' => $password,
-            'Timestamp' => $timestamp,
-            'TransactionType' => 'CustomerPayBillOnline',
-            'Amount' => $grand,
-            'PartyA' => $PhoneNumber,
-            'PartyB' => $BusinessShortCode,
-            'PhoneNumber' => $PhoneNumber,
-            'CallBackURL' => 'http://merushops.mmdtech.co.ke/save.php',
-            'AccountReference' => $Account,
-            'TransactionDesc' => $TransDesc
-        );
+          $curl_post_data = array(
+              'BusinessShortCode' => $BusinessShortCode,
+              'Password' => $password,
+              'Timestamp' => $timestamp,
+              'TransactionType' => 'CustomerPayBillOnline',
+              'Amount' => $grand,
+              'PartyA' => $PhoneNumber,
+              'PartyB' => $BusinessShortCode,
+              'PhoneNumber' => $PhoneNumber,
+              'CallBackURL' => 'https://abcd1234.ngrok.io/save.php',
+              'AccountReference' => $Account,
+              'TransactionDesc' => $TransDesc
+          );
 
-        $data_string = json_encode($curl_post_data);
+          $data_string = json_encode($curl_post_data);
 
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        $curl_response=curl_exec($curl);
-        //echo  $curl_response;
-        unset($_SESSION['shopping_cart']);
+          curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($curl, CURLOPT_POST, true);
+          curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+          curl_setopt($curl, CURLOPT_HEADER, false);
+          $curl_response=curl_exec($curl);
+          //echo  $curl_response;
+          unset($_SESSION['shopping_cart']);
         }
         
         ?>  
@@ -153,39 +152,31 @@ else{
             <div class="mb-3">
               <label for="username">Username</label>
               <div class="input-group">
-               
-                <input type="text" class="form-control" id="username"  name="username" value="<?php echo $rowuser['lastname'];  ?>">
-                
+                <p><?php echo $rowuser['lastname'];  ?></p>                
               </div>
             </div>
             
              <div class="mb-3">
               <label for="username">Tel</label>
               <div class="input-group">
-               
-                <input type="text" class="form-control" id="phone" name="tel" placeholder="2547..."  value="<?php echo $rowuser['contactno'];  ?>" disabled>
-                
+              <p><?php echo $rowuser['contactno'];  ?></p>       
               </div>
             </div>
 
             <div class="mb-3">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email"  name="email" value="<?php echo $rowuser['email'];  ?>">
-             
+              <p><?php echo $rowuser['email'];  ?></p>              
             </div>
             
             <div class="mb-3">
               <label for="address">Address</label>
-              <input type="address" class="form-control" id="address"  name="address" value="<?php echo $rowuser['address'];  ?>">
-             
+              <p><?php echo $rowuser['address'];  ?></p>              
             </div>
             
             <div class="mb-3">
               <label for="username">Total</label>
-              <div class="input-group">
-               
-                <input type="text" class="form-control" id="cash" name="cash"   value="<?php echo $total;  ?>">
-                
+              <div class="input-group">  
+              <p><?php echo $total;  ?></p>              
               </div>
             </div><br>          
 
